@@ -12,7 +12,7 @@ const products = computed(() => AppState.products)
       <p class="subtitle">Commune with the Beyond</p>
       <div class="product-grid">
         <div v-for="product in products" :key="product.id" class="product-card">
-          <img :src="product.img || '/assets/parchment-placeholder.png'" alt="Product Image" class="product-img" />
+          <img :src="product.img || 'https://via.placeholder.com/200x200?text=Product'" alt="Product Image" class="product-img" />
           <h2 class="product-name">{{ product.name }}</h2>
           <p class="product-description">{{ product.description }}</p>
           <p class="product-price">${{ product.price }}</p>
@@ -28,14 +28,13 @@ const products = computed(() => AppState.products)
 
 .home {
   display: grid;
-  height: 100vh;
   place-content: center;
   text-align: center;
   user-select: none;
-  background: url('/assets/dark-wood-texture.jpg') no-repeat center center fixed;
+  background: url('https://via.placeholder.com/1920x1080?text=Dark+Wood+Texture') no-repeat center center fixed;
   background-size: cover;
   position: relative;
-  overflow: hidden;
+  min-height: 100vh; /* Minimum height, allows natural expansion */
 
   &::before {
     content: '';
@@ -49,11 +48,11 @@ const products = computed(() => AppState.products)
   }
 
   .home-card {
-    width: clamp(500px, 60vw, 1000px);
+    width: clamp(500px, 80vw, 1200px); /* Increased max width for 4 items */
     position: relative;
     z-index: 2;
-    padding: 2.5rem;
-    background: url('/assets/faded-parchment.jpg') no-repeat center center;
+    padding: 1rem 2.5rem; /* Reduced top padding from 2.5rem to 1rem */
+    background: url('https://via.placeholder.com/1000x600?text=Parchment') no-repeat center center;
     background-size: cover;
     border: 3px solid #2c1e0f;
     border-radius: 10px;
@@ -79,9 +78,18 @@ const products = computed(() => AppState.products)
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(4, 1fr); /* 4 items side by side on desktop */
       gap: 2rem;
-      padding: 1rem;
+      padding: 2rem 1rem 1rem; /* Added 2rem top padding for gap below navbar */
+      overflow: hidden; /* Contain items within grid */
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr); /* 2 items on tablets */
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr; /* 1 item on mobile */
+      }
 
       .product-card {
         background: rgba(44, 30, 15, 0.85);
@@ -168,7 +176,7 @@ const products = computed(() => AppState.products)
     position: absolute;
     width: 60px;
     height: 60px;
-    background: url('/assets/planchette.png') no-repeat center;
+    background: url('https://via.placeholder.com/60x60?text=Planchette') no-repeat center;
     background-size: contain;
     top: 15%;
     left: 15%;
