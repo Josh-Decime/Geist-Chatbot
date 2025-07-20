@@ -9,5 +9,6 @@ export class Product {
         this.additionalAiInfo = data.additionalAiInfo
         this.price = data.price
         this.img = data.img
+        this.inventoryAmount = data.inventoryAmount || null
     }
 }

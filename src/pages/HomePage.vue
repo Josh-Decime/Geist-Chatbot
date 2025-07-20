@@ -1,8 +1,17 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { AppState } from '../AppState.js' // Ensure this path matches your project structure
 
 const products = computed(() => AppState.products)
+const selectedProduct = ref(null) // Track the selected product for the modal
+
+const openModal = (product) => {
+  selectedProduct.value = product
+}
+
+const closeModal = () => {
+  selectedProduct.value = null
+}
 </script>
 
 <template>
@@ -11,12 +20,20 @@ const products = computed(() => AppState.products)
       <h1 class="title">Mystic Emporium</h1>
       <p class="subtitle">Commune with the Beyond</p>
       <div class="product-grid">
-        <div v-for="product in products" :key="product.id" class="product-card">
+        <div v-for="product in products" :key="product.id" class="product-card" @click="openModal(product)">
           <img :src="product.img || 'https://via.placeholder.com/200x200?text=Product'" alt="Product Image" class="product-img" />
           <h2 class="product-name">{{ product.name }}</h2>
-          <p class="product-description">{{ product.description }}</p>
           <p class="product-price">${{ product.price }}</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div v-if="selectedProduct" class="modal-overlay" @click.self="closeModal">
+      <div class="modal-content">
+        <h5 class="modal-title">{{ selectedProduct.name }}</h5>
+        <p class="modal-description">{{ selectedProduct.description }}</p>
+        <button class="modal-close" @click="closeModal">×</button>
       </div>
     </div>
     <div class="planchette"></div>
@@ -34,7 +51,7 @@ const products = computed(() => AppState.products)
   background: url('https://via.placeholder.com/1920x1080?text=Dark+Wood+Texture') no-repeat center center fixed;
   background-size: cover;
   position: relative;
-  min-height: 100vh; /* Minimum height, allows natural expansion */
+  min-height: 100vh;
 
   &::before {
     content: '';
@@ -48,10 +65,10 @@ const products = computed(() => AppState.products)
   }
 
   .home-card {
-    width: clamp(500px, 80vw, 1200px); /* Increased max width for 4 items */
+    width: clamp(500px, 80vw, 1200px);
     position: relative;
     z-index: 2;
-    padding: 1rem 2.5rem; /* Reduced top padding from 2.5rem to 1rem */
+    padding: 1rem 2.5rem;
     background: url('https://via.placeholder.com/1000x600?text=Parchment') no-repeat center center;
     background-size: cover;
     border: 3px solid #2c1e0f;
@@ -78,38 +95,28 @@ const products = computed(() => AppState.products)
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 items side by side on desktop */
+      grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
-      padding: 2rem 1rem 1rem; /* Added 2rem top padding for gap below navbar */
-      overflow: hidden; /* Contain items within grid */
+      padding: 2rem 1rem 1rem;
+      overflow: hidden;
 
       @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr); /* 2 items on tablets */
+        grid-template-columns: repeat(2, 1fr);
       }
 
       @media (max-width: 480px) {
-        grid-template-columns: 1fr; /* 1 item on mobile */
+        grid-template-columns: 1fr;
       }
 
       .product-card {
         background: rgba(44, 30, 15, 0.85);
-        padding: 1.5rem;
+        padding: 1rem;
         border-radius: 8px;
         border: 1px solid #4a3a1e;
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         position: relative;
         overflow: hidden;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
-          pointer-events: none;
-        }
+        cursor: pointer;
 
         &:hover {
           transform: translateY(-8px);
@@ -135,16 +142,8 @@ const products = computed(() => AppState.products)
           font-family: 'UnifrakturMaguntia', cursive;
           font-size: 1.6rem;
           color: #d4c7a3;
-          margin: 1rem 0 0.5rem;
+          margin: 0.5rem 0;
           letter-spacing: 1px;
-        }
-
-        .product-description {
-          font-family: 'IM Fell English', serif;
-          font-size: 0.95rem;
-          color: #b0a68a;
-          margin-bottom: 1rem;
-          line-height: 1.4;
         }
 
         .product-price {
@@ -152,6 +151,7 @@ const products = computed(() => AppState.products)
           font-size: 1.1rem;
           color: #d4c7a3;
           font-weight: bold;
+          margin: 0.5rem 0;
         }
       }
     }
@@ -184,6 +184,65 @@ const products = computed(() => AppState.products)
     z-index: 3;
     pointer-events: none;
     filter: drop-shadow(0 0 5px rgba(212, 199, 163, 0.3));
+  }
+
+  /* Modal Styling */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Opaque overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: rgba(44, 30, 15, 0.98); /* Opaque background */
+    border: 1px solid #4a3a1e;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 80%;
+    max-width: 800px; /* Larger modal */
+    height: 70vh; /* Larger modal height */
+    color: #d0d0d0;
+    position: relative;
+    overflow-y: auto; /* Scroll if content overflows */
+  }
+
+  .modal-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    color: #d4c7a3;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .modal-description {
+    font-family: 'IM Fell English', serif;
+    color: #b0a68a;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: 1px solid #d4c7a3;
+    color: #d4c7a3;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .modal-close:hover {
+    background: #4a3a1e;
   }
 }
 </style>
