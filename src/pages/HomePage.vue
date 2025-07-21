@@ -40,6 +40,17 @@ const closeModal = () => {
   </div>
 </template>
 
+<!-- <style lang="scss">
+/* Global cursor style - NOT scoped */
+body, html {
+  cursor: url('/src/assets/img/Basic-Planchette.png'), auto !important;
+}
+
+* {
+  cursor: url('/src/assets/img/Basic-Planchette.png'), auto !important;
+}
+</style> -->
+
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=UnifrakturMaguntia&display=swap');
 
@@ -52,6 +63,7 @@ const closeModal = () => {
   background-size: cover;
   position: relative;
   min-height: 100vh;
+  
 
   &::before {
     content: '';
