@@ -21,7 +21,6 @@ const closeModal = () => {
       <p class="subtitle">Commune with the Beyond</p>
       <div class="product-grid">
         <div v-for="product in products" :key="product.id" class="product-card" @click="openModal(product)">
-          <img :src="product.img || 'https://via.placeholder.com/200x200?text=Product'" alt="Product Image" class="product-img" />
           <h2 class="product-name">{{ product.name }}</h2>
           <p class="product-price">${{ product.price }}</p>
         </div>
@@ -32,6 +31,7 @@ const closeModal = () => {
     <div v-if="selectedProduct" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
         <h5 class="modal-title">{{ selectedProduct.name }}</h5>
+        <img :src="selectedProduct.img || 'https://via.placeholder.com/200x200?text=Product'" alt="Product Image" class="modal-product-img" />
         <p class="modal-description">{{ selectedProduct.description }}</p>
         <button class="modal-close" @click="closeModal">×</button>
       </div>
@@ -256,5 +256,14 @@ body, html {
   .modal-close:hover {
     background: #4a3a1e;
   }
+  
+  .modal-product-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 8px;
+}
 }
 </style>

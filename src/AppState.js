@@ -1,6 +1,20 @@
 import { reactive } from 'vue'
 import { Product } from './models/Product.js'
 
+const getImageUrl = (imageName) => {
+  try {
+    // Try without the '../' prefix
+    return new URL(`/src/assets/img/${imageName}`, import.meta.url).href
+  } catch (error) {
+    console.error('Error loading image:', imageName, error)
+    return null
+  }
+}
+console.log('Holy Salt image URL:', getImageUrl('Holy-Salt.png'));
+console.log('Midnight Candles image URL:', getImageUrl('Midnight-Candles.png'));
+console.log('Ravens Eye image URL:', getImageUrl('Ravens-Eye-Pendant.png'));
+console.log('Grimoire image URL:', getImageUrl('Grimoire-of-Shadows.png'));
+
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
   /**@type {import('@bcwdev/auth0provider-client').Identity} */
@@ -8,7 +22,7 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} user info from the database*/
   account: null,
 
-  // I haven't been able to work on this much lately because I haven't had a lot of time left over after work, family time, & working on several art commissions for my custom 3D printed art masks. Time spent working on the Voiceflow AI chat bot also doesn't reflect on commits to this project. I am still making progress on this with what time I have available.
+  // Function to dynamically import images from assets
 
   products: [
     new Product({
@@ -16,28 +30,28 @@ export const AppState = reactive({
       description: 'Salt water blessed by a priest before being dehydrated, leaving behind the finest holy water infused salts. Perfect for fending off bad spirits & demons',
       additionalAiInfo: '',
       price: '29.99',
-      img: '',
+      img: getImageUrl('Holy-Salt.png'),
     }),
     new Product({
       name: 'Midnight Candles',
       description: 'Hand-dipped black candles infused with protective herbs and essential oils. Burns with an eerie blue flame that wards off malevolent entities',
       additionalAiInfo: '',
       price: '24.99',
-      img: '',
+      img: getImageUrl('Midnight-Candles.png'),
     }),
     new Product({
       name: 'Raven\'s Eye Pendant',
       description: 'Obsidian pendant carved to resemble a raven\'s eye, said to grant the wearer sight beyond the veil. Includes silver chain blessed under a full moon',
       additionalAiInfo: '',
       price: '49.99',
-      img: '',
+      img: getImageUrl('Ravens-Eye-Pendant.png'),
     }),
     new Product({
       name: 'Grimoire of Shadows',
       description: 'Leather-bound spell book filled with ancient incantations and protective rituals. Hand-written on parchment with iron gall ink',
       additionalAiInfo: '',
       price: '89.99',
-      img: '',
+      img: getImageUrl('Grimoire-of-Shadows.png'),
     }),
     new Product({
       name: 'Phantom Mist Diffuser Oil',
