@@ -31,8 +31,8 @@ const closeModal = () => {
     <div v-if="selectedProduct" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
         <h5 class="modal-title">{{ selectedProduct.name }}</h5>
-        <img :src="selectedProduct.img || 'https://via.placeholder.com/200x200?text=Product'" alt="Product Image" class="modal-product-img" />
         <p class="modal-description">{{ selectedProduct.description }}</p>
+        <img v-if="selectedProduct.img" :src="selectedProduct.img" alt="Product Image" class="modal-product-img" />
         <button class="modal-close" @click="closeModal">×</button>
       </div>
     </div>
@@ -256,7 +256,7 @@ body, html {
   .modal-close:hover {
     background: #4a3a1e;
   }
-  
+
   .modal-product-img {
   width: 200px;
   height: 200px;
