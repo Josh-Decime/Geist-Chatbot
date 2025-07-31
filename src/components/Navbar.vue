@@ -20,7 +20,7 @@ function toggleTheme() {
   <nav class="navbar navbar-expand-sm">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="https://via.placeholder.com/50x50?text=Logo" height="50" class="logo" />
+        <img alt="logo" src="@/assets/img/Logo.png" height="50" class="logo" />
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
