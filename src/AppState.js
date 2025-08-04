@@ -275,28 +275,28 @@ export const AppState = reactive({
       description: 'Twisted version of traditional dreamcatcher woven with spider silk and raven feathers. Captures bad dreams and transforms them into prophetic visions',
       additionalAiInfo: '',
       price: '76.99',
-      img: '',
+      img: getImageUrl('Nightmare-Catcher-Dreamcatcher.png'),
     }),
     new Product({
       name: 'Gargoyle Guardian Statue',
       description: 'Hand-carved stone gargoyle that comes to life during supernatural threats. Protects your home from demons and malevolent spirits while you sleep',
       additionalAiInfo: '',
       price: '389.99',
-      img: '',
+      img: getImageUrl('Gargoyle-Guardian-Statue.png'),
     }),
     new Product({
       name: 'Witch Doctor\'s Ritual Bowl',
       description: 'Ancient ceramic bowl used for scrying and potion brewing. Made from clay mixed with bone dust and blessed by Haitian voodoo practitioners',
       additionalAiInfo: '',
       price: '127.99',
-      img: '',
+      img: getImageUrl('Witch-Doctors-Ritual-Bowl.png'),
     }),
     new Product({
       name: 'Phantom Chess Set',
       description: 'Chess set where pieces move themselves, playing games against long-dead grandmasters. Victory grants wisdom, defeat may cost you memories',
       additionalAiInfo: '',
       price: '267.99',
-      img: '',
+      img: getImageUrl('Phantom-Chess-Set.png'),
     }),
   ]
 
