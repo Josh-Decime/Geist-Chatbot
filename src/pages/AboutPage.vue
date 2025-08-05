@@ -1,6 +1,3 @@
-<script setup>
-
-</script>
 
 <template>
   <div class="about">
@@ -62,6 +59,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+
+</script>
 
 <style scoped lang="scss">
 .about {
