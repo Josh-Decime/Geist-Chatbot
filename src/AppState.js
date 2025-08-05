@@ -1,28 +1,24 @@
 import { reactive } from 'vue'
 import { Product } from './models/Product.js'
 
+// Function to dynamically import images from assets
 const getImageUrl = (imageName) => {
   try {
-    // Try without the '../' prefix
     return new URL(`/src/assets/img/${imageName}`, import.meta.url).href
   } catch (error) {
     console.error('Error loading image:', imageName, error)
     return null
   }
 }
-console.log('Holy Salt image URL:', getImageUrl('Holy-Salt.png'));
-console.log('Midnight Candles image URL:', getImageUrl('Midnight-Candles.png'));
-console.log('Ravens Eye image URL:', getImageUrl('Ravens-Eye-Pendant.png'));
-console.log('Grimoire image URL:', getImageUrl('Grimoire-of-Shadows.png'));
 
-// NOTE AppState is a reactive object to contain app level data
+
+
 export const AppState = reactive({
   /**@type {import('@bcwdev/auth0provider-client').Identity} */
   identity: null,
   /** @type {import('./models/Account.js').Account} user info from the database*/
   account: null,
 
-  // Function to dynamically import images from assets
 
   products: [
     new Product({

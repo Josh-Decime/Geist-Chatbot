@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { AppState } from '../AppState.js' // Ensure this path matches your project structure
+import { AppState } from '../AppState.js' 
 
 const products = computed(() => AppState.products)
 const selectedProduct = ref(null) // Track the selected product for the modal
@@ -17,8 +17,11 @@ const closeModal = () => {
 <template>
   <div class="home">
     <div class="home-card">
-      <h1 class="title">Mystic Emporium</h1>
-      <p class="subtitle">Commune with the Beyond</p>
+      <!-- TODO come up with a name for the store -->
+      <h1 class="title">Mystic Emporium</h1> 
+      <!-- TODO come up with a slogan -->
+      <p class="subtitle">Commune with the Beyond</p> 
+   <!-- NOTE Product display -->
       <div class="product-grid">
         <div v-for="product in products" :key="product.id" class="product-card" @click="openModal(product)">
           <h2 class="product-name">{{ product.name }}</h2>
@@ -27,7 +30,7 @@ const closeModal = () => {
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- NOTE Modal -->
     <div v-if="selectedProduct" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
         <h5 class="modal-title">{{ selectedProduct.name }}</h5>
@@ -40,16 +43,7 @@ const closeModal = () => {
   </div>
 </template>
 
-<!-- <style lang="scss">
-/* Global cursor style - NOT scoped */
-body, html {
-  cursor: url('/src/assets/img/Basic-Planchette.png'), auto !important;
-}
 
-* {
-  cursor: url('/src/assets/img/Basic-Planchette.png'), auto !important;
-}
-</style> -->
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=UnifrakturMaguntia&display=swap');
