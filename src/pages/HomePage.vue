@@ -21,8 +21,8 @@
     </div>
 
     <div class="mystical-container">
-      <h1 class="mystical-title">Mystic Emporium</h1>
-      <p class="mystical-subtitle">Commune with the Beyond</p>
+      <h1 class="mystical-title">Nether & Co.</h1>
+      <p class="mystical-subtitle">Goods From Beyond the Nether</p>
       
       <div class="product-grid">
         <div v-for="product in products" :key="product.id" class="product-card" @click="openModal(product)">

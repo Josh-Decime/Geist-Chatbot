@@ -294,6 +294,76 @@ export const AppState = reactive({
       price: '267.99',
       img: getImageUrl('Phantom-Chess-Set.png'),
     }),
+    new Product({
+      name: 'Siren\'s Lament Music Box',
+      description: 'Waterlogged music box that plays the final song of a drowned siren. The haunting melody compels listeners to reveal their deepest secrets',
+      additionalAiInfo: '',
+      price: '112.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Widow\'s Mourning Veil',
+      description: 'Antique black lace veil worn by grieving Victorian women. Allows the wearer to communicate with recently deceased spouses for one final goodbye',
+      additionalAiInfo: '',
+      price: '143.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Alchemist\'s Transmutation Crucible',
+      description: 'Medieval brass crucible that transforms base emotions into spiritual energy. Perfect for brewing potions that alter one\'s fundamental nature',
+      additionalAiInfo: '',
+      price: '198.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Forgotten Name Diary',
+      description: 'Leather journal that writes itself, recording the names of people who have been erased from history. Reading from it may restore lost memories or forgotten souls',
+      additionalAiInfo: '',
+      price: '87.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Moonlit Séance Table',
+      description: 'Round oak table with carved protective sigils that only appear under moonlight. Amplifies spiritual communication and prevents malevolent entities from manifesting',
+      additionalAiInfo: '',
+      price: '456.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Phantom Limb Prosthetic',
+      description: 'Ethereal replacement limb visible only to those touched by death. Grants supernatural strength but grows more solid with each life it takes',
+      additionalAiInfo: '',
+      price: '899.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Weeping Angel Statue Fragment',
+      description: 'Broken piece of stone from an ancient weeping angel. Touching it freezes time for everyone except the holder, but attracts quantum-locked entities',
+      additionalAiInfo: '',
+      price: '333.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Grave Robber\'s Blessed Shovel',
+      description: 'Consecrated burial spade that glows when near hidden graves. Allows the wielder to dig through any earthly barrier but curses them with restless sleep',
+      additionalAiInfo: '',
+      price: '234.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Lich\'s Phylactery Locket',
+      description: 'Golden locket containing a fragment of undead soul. Grants immortality as long as worn, but slowly drains the humanity from the bearer',
+      additionalAiInfo: '',
+      price: '1299.99',
+      img: '',
+    }),
+    new Product({
+      name: 'Oracle\'s Third Eye Monocle',
+      description: 'Crystal monocle that reveals the threads of fate surrounding any person. See their past, present, and multiple possible futures simultaneously',
+      additionalAiInfo: '',
+      price: '176.99',
+      img: '',
+    })
   ]
 
 
